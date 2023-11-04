@@ -1,0 +1,29 @@
+{
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "editor.fontSize": 16,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.addMissingImports": true
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.singleQuote": true,
+  "workbench.colorCustomizations": {
+    "editorError.foreground": "#00000000"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "extensions.ignoreRecommendations": true,
+  "explorer.confirmDragAndDrop": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "explorer.confirmDelete": false,
+  "prettier.quoteProps": "preserve",
+  "workbench.startupEditor": "none",
+  "git.openRepositoryInParentFolders": "never"
+}
