@@ -14,3 +14,7 @@ without dedicating significant resources to SEO optimization."
 
 lib/actions folder
 - a connection between backend and frontend :D
+
+>>> ORIGINAL REPO
+
+https://github.com/adrianhajdin/stack_overflow_nextjs13/blob/main/package.json
