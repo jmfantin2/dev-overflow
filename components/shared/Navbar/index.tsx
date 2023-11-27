@@ -1,6 +1,9 @@
 import { SignedIn, UserButton } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ThemeSelector } from './ThemeSelector';
+import { MobileNav } from './MobileNav';
+import { GlobalSearch } from '@/components/shared/Search/GlobalSearch';
 
 export function Navbar() {
   return (
@@ -16,8 +19,11 @@ export function Navbar() {
           Dev <span className="text-primary-500">Overflow</span>
         </p>
       </Link>
+
+      <GlobalSearch />
+
       <div className="flex-between gap-5">
-        Theme
+        <ThemeSelector />
         <SignedIn>
           <UserButton
             afterSignOutUrl="/"
@@ -31,7 +37,8 @@ export function Navbar() {
             }}
           />
         </SignedIn>
-        MobileNavbar
+
+        <MobileNav />
       </div>
     </nav>
   );

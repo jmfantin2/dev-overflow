@@ -15,6 +15,9 @@ without dedicating significant resources to SEO optimization."
 lib/actions folder
 - a connection between backend and frontend :D
 
+components/ui folder
+- shadcn components installed via 'npx shadcn-ui@latest add COMP_NAME'
+
 >>> ORIGINAL REPO
 
 https://github.com/adrianhajdin/stack_overflow_nextjs13/blob/main/package.json
