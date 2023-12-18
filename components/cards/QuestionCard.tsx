@@ -14,7 +14,7 @@ interface QuestionProps {
   upvotes: number;
   views: number;
   answers: Array<object>;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export function QuestionCard({
