@@ -46,17 +46,17 @@ export function RightSidebar() {
   );
 }
 const hotQuestions = [
-  { _id: 1, title: 'How do I use express as a custom server in NextJs?' },
-  { _id: 2, title: 'How do I use express as a custom server in NextJs?' },
-  { _id: 3, title: 'How do I use express as a custom server in NextJs?' },
-  { _id: 4, title: 'How do I use express as a custom server in NextJs?' },
-  { _id: 5, title: 'How do I use express as a custom server in NextJs?' },
+  { _id: '1', title: 'How do I use express as a custom server in NextJs?' },
+  { _id: '2', title: 'How do I use express as a custom server in NextJs?' },
+  { _id: '3', title: 'How do I use express as a custom server in NextJs?' },
+  { _id: '4', title: 'How do I use express as a custom server in NextJs?' },
+  { _id: '5', title: 'How do I use express as a custom server in NextJs?' },
 ];
 
 const popularTags = [
-  { _id: 1, name: 'Javascript', totalQuestions: 5 },
-  { _id: 2, name: 'Javascript', totalQuestions: 5 },
-  { _id: 3, name: 'Javascript', totalQuestions: 5 },
-  { _id: 4, name: 'Javascript', totalQuestions: 5 },
-  { _id: 5, name: 'Javascript', totalQuestions: 5 },
+  { _id: '1', name: 'Javascript', totalQuestions: 5 },
+  { _id: '2', name: 'Javascript', totalQuestions: 5 },
+  { _id: '3', name: 'Javascript', totalQuestions: 5 },
+  { _id: '4', name: 'Javascript', totalQuestions: 5 },
+  { _id: '5', name: 'Javascript', totalQuestions: 5 },
 ];

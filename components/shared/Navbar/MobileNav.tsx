@@ -12,6 +12,7 @@ import { SignedOut } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
 import { sidebarLinks } from '@/constants';
 import { usePathname } from 'next/navigation';
+import shapeshifter from 'classnames';
 
 export function MobileNav() {
   return (
@@ -87,20 +88,27 @@ const NavContent = () => {
           <SheetClose asChild key={item.route}>
             <Link
               href={item.route}
-              className={`${
-                isActive
-                  ? 'primary-gradient rounded-lg text-light-900'
-                  : 'text-dark300_light900'
-              } flex items-center justify-start gap-4 bg-transparent p-4`}
+              className={shapeshifter(
+                'flex items-center justify-start gap-4 bg-transparent p-4',
+                {
+                  'primary-gradient rounded-lg text-light-900': isActive,
+                  'text-dark300_light900': !isActive,
+                }
+              )}
             >
               <Image
                 src={item.imgURL}
                 alt={item.label}
                 width={20}
                 height={20}
-                className={`${isActive ? '' : 'invert-colors'}`}
+                className={shapeshifter({ 'invert-colors': !isActive })}
               />
-              <p className={`${isActive ? 'base-bold' : 'base-medium'}`}>
+              <p
+                className={shapeshifter({
+                  'base-bold': isActive,
+                  'base-medium': !isActive,
+                })}
+              >
                 {item.label}
               </p>
             </Link>

@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { HomePageFilters } from '@/constants/filters';
 import { HomeFilters } from '@/components/shared/Filter/HomeFilters';
 import { NoResult } from '@/components/shared/NoResult';
+import { QuestionCard } from '@/components/cards/QuestionCard';
 
-const questions: any[] = [
+const questions = [
   {
     _id: '1',
     title: 'How to create a new project in react?',
@@ -14,23 +15,23 @@ const questions: any[] = [
       { _id: '1', name: 'react' },
       { _id: '2', name: 'javascript' },
     ],
-    author: 'John Doe',
+    author: { _id: '1', name: 'John Doe', picture: 'john-doe.jpg' },
     upvotes: 10,
     views: 100,
-    answers: 2,
+    answers: [],
     createdAt: '2021-09-01T12:00:00.000Z',
   },
   {
     _id: '2',
-    title: 'How to center a div?',
+    title: 'How to create a new project in react?',
     tags: [
       { _id: '1', name: 'react' },
       { _id: '2', name: 'javascript' },
     ],
-    author: 'John Doe',
+    author: { _id: '1', name: 'John Doe', picture: 'john-doe.jpg' },
     upvotes: 10,
     views: 100,
-    answers: 2,
+    answers: [],
     createdAt: '2021-09-01T12:00:00.000Z',
   },
 ];
@@ -64,7 +65,19 @@ export default function Home() {
       <HomeFilters />
       <div className="mt-10 flex w-full flex-col gap-6">
         {questions.length > 0 ? (
-          questions.map((question) => 'Question card')
+          questions.map((question) => (
+            <QuestionCard
+              key={question._id}
+              _id={question._id}
+              title={question.title}
+              tags={question.tags}
+              author={question.author}
+              upvotes={question.upvotes}
+              views={question.views}
+              answers={question.answers}
+              createdAt={question.createdAt}
+            />
+          ))
         ) : (
           <NoResult
             title="There's no questions to show."

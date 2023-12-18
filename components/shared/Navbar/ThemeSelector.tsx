@@ -9,6 +9,7 @@ import {
   MenubarTrigger,
 } from '@/components/ui/menubar';
 import { themes } from '@/constants';
+import shapeshifter from 'classnames';
 
 export function ThemeSelector() {
   const { mode, setMode } = useTheme();
@@ -55,14 +56,15 @@ export function ThemeSelector() {
                 alt={item.value}
                 width={16}
                 height={16}
-                className={`${mode === item.value && 'active-theme'}`}
+                className={shapeshifter({
+                  'active-theme': mode === item.value,
+                })}
               />
               <p
-                className={`body-semibold text-light-500 ${
-                  mode === item.value
-                    ? 'text-primary-500'
-                    : 'text-dark100_light900'
-                }`}
+                className={shapeshifter('body-semibold text-light-500', {
+                  'text-primary-500': mode === item.value,
+                  'text-dark100_light900': mode !== item.value,
+                })}
               >
                 {item.label}
               </p>
