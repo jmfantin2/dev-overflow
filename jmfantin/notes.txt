@@ -1,3 +1,7 @@
+>>> COURSE
+https://courses.jsmastery.pro/course/ultimate-next-js-13-course-ebook
+44:07
+
 client_v_server.png
 "If search engine optimization, security concerns and user device specifications are
 NOT a priority for you, and your focus is primarily on delivering dynamic interactivity
