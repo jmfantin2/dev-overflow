@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 import shapeshifter from 'classnames';
 
 interface MetricProps {
@@ -20,17 +22,39 @@ export function Metric({
   textStyles,
   isAuthor,
 }: MetricProps) {
-  return (
-    <div className="flex-center flex-wrap gap-1">
+  const metricContent = (
+    <>
       <Image
         src={imgUrl}
         width={16}
         height={16}
         alt={alt}
-        className={shapeshifter('object-contain ', {
-          'rounded-full': href,
-        })}
+        className={shapeshifter('object-contain', { 'rounded-full': href })}
       />
-    </div>
+
+      <p className={`${textStyles} flex items-center gap-1`}>
+        {value}
+
+        <span
+          className={shapeshifter('small-regular line-clamp-1', {
+            'max-sm:hidden': isAuthor,
+          })}
+        >
+          {title}
+        </span>
+      </p>
+    </>
+  );
+
+  return (
+    <>
+      {href ? (
+        <Link href={href} className="flex-center gap-1">
+          {metricContent}
+        </Link>
+      ) : (
+        <div className="flex-center flex-wrap gap-1">{metricContent}</div>
+      )}
+    </>
   );
 }

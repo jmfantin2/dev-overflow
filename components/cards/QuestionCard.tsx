@@ -49,10 +49,33 @@ export function QuestionCard({
       </div>
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
         <Metric
+          imgUrl="/assets/icons/avatar.svg"
+          alt="user"
+          value={author.name}
+          title=", 1 hour ago"
+          textStyles="body-medium text-dark400_light700"
+          href={`/profile/${author._id}`}
+          isAuthor
+        />
+        <Metric
           imgUrl="/assets/icons/like.svg"
-          alt="like"
+          alt="upvotes"
           value={upvotes}
           title=" votes"
+          textStyles="small-medium text-dark400_light800"
+        />
+        <Metric
+          imgUrl="/assets/icons/message.svg"
+          alt="message"
+          value={answers.length}
+          title=" answers"
+          textStyles="small-medium text-dark400_light800"
+        />
+        <Metric
+          imgUrl="/assets/icons/eye.svg"
+          alt="eye"
+          value={views}
+          title=" views"
           textStyles="small-medium text-dark400_light800"
         />
       </div>
