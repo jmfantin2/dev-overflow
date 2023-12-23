@@ -16,10 +16,10 @@ const questions = [
       { _id: '2', name: 'javascript' },
     ],
     author: { _id: '1', name: 'John Doe', picture: 'john-doe.jpg' },
-    upvotes: 10,
-    views: 100,
+    upvotes: 102332,
+    views: 10000000,
     answers: [],
-    createdAt: '2021-09-01T12:00:00.000Z',
+    createdAt: new Date('2021-09-01T12:00:00.000Z'),
   },
   {
     _id: '2',
@@ -32,7 +32,7 @@ const questions = [
     upvotes: 10,
     views: 100,
     answers: [],
-    createdAt: '2021-09-01T12:00:00.000Z',
+    createdAt: new Date('2021-09-01T12:00:00.000Z'),
   },
 ];
 
