@@ -18,12 +18,6 @@ import { Input } from '@/components/ui/input';
 import { z } from 'zod';
 import { QuestionsSchema } from '@/lib/validations';
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-});
-
 export function QuestionForm() {
   const editorRef = useRef(null);
   //1. Define your form.
@@ -112,8 +106,8 @@ export function QuestionForm() {
                       'codesample | bold italic forecolor | alignleft aligncenter |' +
                       'alignright alignjustify | bullist numlist',
                     content_style: 'body { font-family:Inter; font-size:16px }',
-                    //skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
-                    //content_css: mode === 'dark' ? 'dark' : 'light',
+                    // skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
+                    // content_css: mode === 'dark' ? 'dark' : 'light',
                   }}
                 />
               </FormControl>
