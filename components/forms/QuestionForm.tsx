@@ -20,7 +20,7 @@ import { QuestionsSchema } from '@/lib/validations';
 
 export function QuestionForm() {
   const editorRef = useRef(null);
-  //1. Define your form.
+  // 1. Define your form.
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
@@ -42,7 +42,7 @@ export function QuestionForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className=" flex w-full flex-col gap-10"
       >
-        <FormField //QUESTION TITLE
+        <FormField // QUESTION TITLE
           control={form.control}
           name="title"
           render={({ field }) => (
@@ -64,7 +64,7 @@ export function QuestionForm() {
             </FormItem>
           )}
         />
-        <FormField //DETAILED EXPLANATION
+        <FormField // DETAILED EXPLANATION
           control={form.control}
           name="explanation"
           render={({ field }) => (
@@ -77,7 +77,7 @@ export function QuestionForm() {
                 <Editor
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   onInit={(evt, editor) =>
-                    //@ts-ignore
+                    // @ts-ignore
                     (editorRef.current = editor)
                   }
                   initialValue="<p>This is the initial content of the editor.</p>"
@@ -119,7 +119,7 @@ export function QuestionForm() {
             </FormItem>
           )}
         />
-        <FormField //TAGS
+        <FormField // TAGS
           control={form.control}
           name="tags"
           render={({ field }) => (
