@@ -51,6 +51,7 @@ export function QuestionForm({ type, questionDetails }: Props) {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+    // avoid duplicate posts, change Submit button
     setIsSubmitting(true);
 
     try {

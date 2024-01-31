@@ -57,13 +57,13 @@
  * / Local Search Bar Component
  * / Home Filters
  * / Create a Question Card
- * TODO: ASK A QUESTION PAGE
+ * * ASK A QUESTION PAGE
  * / Question Form and Validations
  * / The Question Editor
  * / Custom Multiple Tags Input
- * ! Making the Form Reusable
+ * / Making the Form Reusable
  * TODO: DEVELOP BACKEND
- * / Thinking in Backend
+ * ! Thinking in Backend
  * / MongoDB and Actions Server Setup
  * / Creating a Question Model
  * / Creating a User Model
