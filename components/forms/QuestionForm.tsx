@@ -24,7 +24,6 @@ import { useTheme } from '@/context/ThemeProvider';
 
 interface Props {
   type?: string;
-  mongoUserId: string;
   questionDetails?: string;
 }
 
