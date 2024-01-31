@@ -59,15 +59,9 @@
  * / Create a Question Card
  * TODO: ASK A QUESTION PAGE
  * / Question Form and Validations
- * ! The Question Editor
+ * / The Question Editor
  * / Custom Multiple Tags Input
- * / Making the Form Reusable
- * TODO: DEVELOP BACKEND
- * / Thinking in Backend
- * / MongoDB and Actions Server Setup
- * / Creating a Question Model
- * / Creating a User Model
- * / Creating a Tag Model
+ * ! Making the Form Reusable
  * TODO: DEVELOP BACKEND
  * / Thinking in Backend
  * / MongoDB and Actions Server Setup
