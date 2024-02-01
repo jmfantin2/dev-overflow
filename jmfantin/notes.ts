@@ -3,12 +3,20 @@
  * * https://courses.jsmastery.pro/course/ultimate-next-js-13-course-ebook
  * * https://github.com/adrianhajdin/stack_overflow_nextjs13/blob/main/package.json
  *
- * ? NOTES
+ * ! NOTES
  *
  * * client_v_server.png
  * "If search engine optimization, security concerns and user device specifications are NOT a priority for you, and your focus is primarily on delivering dynamic interactivity to the user, then client-side rendering (CSR) with technologies like ReactJS can be a suitable choice. A use case where this approach is applicable is in the B2B domain. In such cases, the target audience is specific and known, eliminating the need to optimize SEO since the product is not intended for a wide public audience. This allows you to prioritize developing interactive features and functionalities without dedicating significant resources to SEO optimization."
  *
- * ? STRUCTURE
+ * * mongoosejs.com [Feb 1, 2024]
+ * Mongoose is an elegant MongoDB object modeling for Node.js, providing a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
+ * ?  const mongoose = require('mongoose');
+ * ?  mongoose.connect('mongodb://127.0.0.1:27017/test');
+ * ?  const Cat = mongoose.model('Cat', { name: String });
+ * ?  const kitty = new Cat({ name: 'Zildjian' });
+ * ?  kitty.save().then(() => console.log('meow'));
+ *
+ * ! STRUCTURE
  *
  * * @/lib/actions
  * a connection between backend and frontend
@@ -16,7 +24,8 @@
  * * components/ui folder
  * shadcn components installed via 'npx shadcn-ui@latest add COMP_NAME'
  *
- * ? PROGRESS
+ * ! PROGRESS
+ *
  * * INTRO
  * / Intro
  * * PREREQUISITES
@@ -63,8 +72,8 @@
  * / Custom Multiple Tags Input
  * / Making the Form Reusable
  * TODO: DEVELOP BACKEND
- * ! Thinking in Backend
- * / MongoDB and Actions Server Setup
+ * / Thinking in Backend
+ * ? MongoDB and Actions Server Setup
  * / Creating a Question Model
  * / Creating a User Model
  * / Creating a Tag Model

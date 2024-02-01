@@ -20,6 +20,7 @@ import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTheme } from '@/context/ThemeProvider';
+import { createQuestion } from '@/lib/actions/question.action';
 // import { type } from 'os';
 
 interface Props {
@@ -55,6 +56,7 @@ export function QuestionForm({ type, questionDetails }: Props) {
     setIsSubmitting(true);
 
     try {
+      await createQuestion({});
       if (type === 'Edit') {
         /**
         * ! await editQuestion({
@@ -164,7 +166,7 @@ export function QuestionForm({ type, questionDetails }: Props) {
                     // @ts-ignore
                     editorRef.current = editor;
                   }}
-                  onBlur={field.onBlur}
+                  onBlur={field.onBlur} // "it's going to save the values once we exit"
                   onEditorChange={(content) => field.onChange(content)}
                   initialValue={parsedQuestionDetails?.content || ''}
                   init={{
@@ -199,7 +201,7 @@ export function QuestionForm({ type, questionDetails }: Props) {
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
                 Introduce the problem and expand on what you put in the title.
-                Minimum 20 characters.
+                Minimum 100 characters.
               </FormDescription>
               <FormMessage className="text-red-500" />
             </FormItem>
