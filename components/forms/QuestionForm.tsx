@@ -21,14 +21,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTheme } from '@/context/ThemeProvider';
 import { createQuestion } from '@/lib/actions/question.action';
-// import { type } from 'os';
 
 interface Props {
   type?: string;
   questionDetails?: string;
+  mongoUserId: string;
 }
 
-export function QuestionForm({ type, questionDetails }: Props) {
+export function QuestionForm({ type, questionDetails, mongoUserId }: Props) {
   const { mode } = useTheme();
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,31 +56,14 @@ export function QuestionForm({ type, questionDetails }: Props) {
     setIsSubmitting(true);
 
     try {
-      await createQuestion({});
-      if (type === 'Edit') {
-        /**
-        * ! await editQuestion({
-          questionId: parsedQuestionDetails._id,
-          title: values.title,
-          content: values.explanation,
-          path: pathname,
-        })
-        */
-
-        router.push(`/question/${parsedQuestionDetails._id}`);
-      } else {
-        /**
-        * ! await createQuestion({
-          title: values.title,
-          content: values.explanation,
-          tags: values.tags,
-          author: JSON.parse(mongoUserId),
-          path: pathname,
-        });
-        */
-
-        router.push('/');
-      }
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
+      // navigate to home page
+      router.push('/');
     } catch (error) {
     } finally {
       setIsSubmitting(false);

@@ -77,10 +77,10 @@
  * / Creating a Question Model
  * / Creating a User Model
  * / Creating a Tag Model
- * TODO: CREATE A QUESTION
- * ? Create Question Action [24.08]
+ * * CREATE A QUESTION
+ * / Create Question Action [24.08]
  * TODO: FETCHING QUESTIONS ON THE HOME PAGE
- * / Display Questions on the Home Page [15:58]
+ * ? Display Questions on the Home Page [15:58]
  * TODO: THE WEBHOOKS
  * / Why and what are Webhooks [3:00]
  * / Implement Webhooks and User Actions [16:11]
