@@ -18,7 +18,7 @@ import { Button } from '../ui/button';
 import { QuestionsSchema } from '@/lib/validations';
 import { Badge } from '../ui/badge';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeProvider';
 import { createQuestion } from '@/lib/actions/question.action';
 
@@ -33,7 +33,7 @@ export function QuestionForm({ type, questionDetails, mongoUserId }: Props) {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-  // const pathname = usePathname();
+  const pathname = usePathname();
 
   const parsedQuestionDetails =
     questionDetails && JSON.parse(questionDetails || '');
@@ -61,6 +61,7 @@ export function QuestionForm({ type, questionDetails, mongoUserId }: Props) {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
       // navigate to home page
       router.push('/');

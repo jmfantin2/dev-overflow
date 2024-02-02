@@ -3,14 +3,40 @@
 import Question from '@/database/question.model';
 import Tag from '@/database/tag.model';
 import { connectToDatabase } from '../mongoose';
+import { CreateQuestionParams, GetQuestionsParams } from './shared.types';
+import User from '@/database/user.model';
+import { revalidatePath } from 'next/cache';
+/**
+ * ? getQuestions
+ * ? (page?: num, pageSize?: num, searchQuery?: str, filter?: str)
+ * * GET a list of Questions.
+ *
+ * ? createQuestion(
+ * ? (title: str, content: str, tags: str[], author: ObjectId | IUser, path: str)
+ * * POST a new Question.
+ */
 
-export async function createQuestion(params: any) {
+export async function getQuestions(params: GetQuestionsParams) {
+  try {
+    connectToDatabase();
+    const questions = await Question.find({})
+      .populate({ path: 'tags', model: Tag })
+      .populate({ path: 'author', model: User })
+      .sort({ createdAt: -1 }); // i come from a land down under
+    return { questions };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function createQuestion(params: CreateQuestionParams) {
   // eslint-disable-next-line no-empty
   try {
     // connect to db
     connectToDatabase();
 
-    const { title, content, tags, author /*, path */ } = params;
+    const { title, content, tags, author, path } = params;
     // create question
     const question = await Question.create({
       title,
@@ -32,6 +58,9 @@ export async function createQuestion(params: any) {
     await Question.findByIdAndUpdate(question._id, {
       $push: { tags: { $each: tagDocuments } },
     });
+
+    revalidatePath(path);
+    // purges cached data on demand
   } catch (err) {
     // error handling
   }

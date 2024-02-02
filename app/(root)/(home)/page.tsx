@@ -6,37 +6,16 @@ import { HomePageFilters } from '@/constants/filters';
 import { HomeFilters } from '@/components/shared/Filter/HomeFilters';
 import { NoResult } from '@/components/shared/NoResult';
 import { QuestionCard } from '@/components/cards/QuestionCard';
+import { getQuestions } from '@/lib/actions/question.action';
 
-const questions = [
-  {
-    _id: '1',
-    title: 'How to create a new project in react?',
-    tags: [
-      { _id: '1', name: 'react' },
-      { _id: '2', name: 'javascript' },
-    ],
-    author: { _id: '1', name: 'John Doe', picture: 'john-doe.jpg' },
-    upvotes: 102332,
-    views: 10000000,
-    answers: [],
-    createdAt: new Date('2021-09-01T12:00:00.000Z'),
-  },
-  {
-    _id: '2',
-    title: 'How to create a new project in react?',
-    tags: [
-      { _id: '1', name: 'react' },
-      { _id: '2', name: 'javascript' },
-    ],
-    author: { _id: '1', name: 'John Doe', picture: 'john-doe.jpg' },
-    upvotes: 10,
-    views: 100,
-    answers: [],
-    createdAt: new Date('2021-09-01T12:00:00.000Z'),
-  },
-];
+/**
+ * * GET @ getQuestions({}) : retrievedData = ALL questions
+ */
 
-export default function HomePage() {
+export default async function HomePage() {
+  const retrievedData = await getQuestions({});
+  console.log('getQuestions():', retrievedData.questions);
+
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -64,8 +43,8 @@ export default function HomePage() {
       </div>
       <HomeFilters />
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => (
+        {retrievedData.questions.length > 0 ? (
+          retrievedData.questions.map((question) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
