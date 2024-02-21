@@ -83,8 +83,8 @@
  * / Display Questions on the Home Page [15:58]
  * TODO: THE WEBHOOKS
  * / Why and what are Webhooks [3:00]
- * / Implement Webhooks and User Actions [16:11]
- * ? Deploy Webhooks [29:21]
+ * ? Implement Webhooks and User Actions [16:11]
+ * / Deploy Webhooks [29:21]
  * TODO: COMMUNITY PAGE
  * / Create Community Page [22:51]
  * TODO: TAGS PAGE

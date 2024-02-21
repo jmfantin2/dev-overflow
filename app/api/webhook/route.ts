@@ -2,11 +2,12 @@
 import { Webhook } from 'svix';
 import { headers } from 'next/headers';
 import { WebhookEvent } from '@clerk/nextjs/server';
-import { createUser, deleteUser, updateUser } from '@/lib/actions/user.action';
+import { createUser, updateUser, deleteUser } from '@/lib/actions/user.action';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
+  // TODO: Add your webhook secret to .env or .env.local
   const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -32,7 +33,7 @@ export async function POST(req: Request) {
   const payload = await req.json();
   const body = JSON.stringify(payload);
 
-  // Create a new SVIX instance with your secret.
+  // Create a new Svix instance with your secret.
   const wh = new Webhook(WEBHOOK_SECRET);
 
   let evt: WebhookEvent;
@@ -51,52 +52,62 @@ export async function POST(req: Request) {
     });
   }
 
+  // ? IT STARTS HERE
+
   const eventType = evt.type;
 
+  // ! LISTEN: user.created
   if (eventType === 'user.created') {
     const { id, email_addresses, image_url, username, first_name, last_name } =
       evt.data;
-
     // Create a new user in your database
     const mongoUser = await createUser({
       clerkId: id,
       name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
-      username: username!,
+      username: username!, // exclamation avoids undefined
       email: email_addresses[0].email_address,
       picture: image_url,
     });
-
-    return NextResponse.json({ message: 'OK', user: mongoUser });
+    return NextResponse.json({
+      message: 'User created successfully!',
+      user: mongoUser,
+    });
   }
 
+  // ! LISTEN: user.updated
   if (eventType === 'user.updated') {
     const { id, email_addresses, image_url, username, first_name, last_name } =
       evt.data;
-
     // Create a new user in your database
     const mongoUser = await updateUser({
       clerkId: id,
+      // * this is where it differs from the create user function:
       updatedData: {
         name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
-        username: username!,
+        username: username!, // exclamation avoids undefined
         email: email_addresses[0].email_address,
         picture: image_url,
       },
       path: `/profile/${id}`,
     });
-
-    return NextResponse.json({ message: 'OK', user: mongoUser });
+    return NextResponse.json({
+      message: 'User updated successfully!',
+      user: mongoUser,
+    });
   }
 
+  // ! LISTEN: user.deleted
   if (eventType === 'user.deleted') {
     const { id } = evt.data;
-
     const deletedUser = await deleteUser({
-      clerkId: id!,
+      clerkId: id!, // exclamation prevents undefined
     });
 
-    return NextResponse.json({ message: 'OK', user: deletedUser });
+    return NextResponse.json({
+      message: 'User deleted successfully!',
+      user: deletedUser,
+    });
   }
 
-  return NextResponse.json({ message: 'OK' });
+  return new Response('', { status: 200 });
 }
